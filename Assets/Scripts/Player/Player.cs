@@ -56,7 +56,7 @@ public class Player : Character
         // SWITCH STATE LOGIC
         // Clean up current state before leaving
         // Safety check
-        if(currentState != null)
+        if (currentState != null)
         {
             currentState.ExitState(this);
         }
@@ -83,47 +83,7 @@ public class Player : Character
     // --- Shared Logic Helpers ---
     public bool CheckGrounded()
     {
-<<<<<<< HEAD
-        rBody.linearVelocity = new Vector2(moveInput.x * MoveSpeed, rBody.linearVelocity.y);
-        FlipSprite(moveInput.x);
-    }
-
-    private void Jump()
-    {
-        AudioManager.Instance.PlayJumpSFX();
-        rBody.linearVelocity = new Vector2(rBody.linearVelocity.x, jumpForce);
-        anim.SetTrigger("Jump");
-
-        jumpsRemaining--;
-    }
-
-    private void CheckEnvironment()
-    {
-        bool wasGrounded = isGrounded;
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-
-        // Reset jumps when the player lands
-        if(isGrounded && !wasGrounded)
-        {
-            jumpsRemaining = maxJumps;
-        }
-
-        // Safety: if the player walks off a lege without jumping.
-        // they should only have 1 jump left
-        if(!isGrounded && wasGrounded && jumpsRemaining == maxJumps)
-        {
-            jumpsRemaining--;
-        }
-    }
-
-    private void UpdateAnimations()
-    {
-        anim.SetFloat("HorizontalSpeed", Mathf.Abs(rBody.linearVelocity.x));
-        anim.SetFloat("VerticalVelocity", rBody.linearVelocity.y);
-        anim.SetBool("IsGrounded", isGrounded);
-=======
         return Physics2D.OverlapCircle(groundCheck.position, data.groundCheckRadius, data.groundLayer);
->>>>>>> a1337444a01e76668268c7d6c9f2141bdb410059
     }
 
     public override void TakeDamage(int amount)
@@ -149,7 +109,7 @@ public class Player : Character
 
     public override void Move()
     {
-        
+
     }
 
     public void ResetState(Vector3 resetPos)
